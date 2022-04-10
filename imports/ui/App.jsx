@@ -7,6 +7,10 @@ import TaskForm from './components/TaskForm';
 export const App = () => {
   const tasks = useTracker(() => TasksCollection.find({}, {sort: {createdAt: -1} }).fetch());
 
+  const deleteTask = ({_id}) => {
+    TasksCollection.remove(_id);
+  };
+
   return (
     <div>
       <h1>TO-DO List</h1>
@@ -16,6 +20,7 @@ export const App = () => {
           <Task
             key={ i }
             task={ task }
+            deleteBtn={deleteTask}
           />
         ))}
       </ul>

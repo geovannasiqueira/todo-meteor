@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Task = ( { task } ) => {
+const Task = ( { task, deleteBtn } ) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = ( e ) => {
@@ -11,13 +11,15 @@ const Task = ( { task } ) => {
     }
   }
 
-  return (<li>
+  return ( <li>
+    {console.log(task)}
     <input
       type="checkbox"
       onChange={handleChange}
       checked={isChecked}
     />
-    { task.text }
+    <p>{ task.text }</p>
+    <button type="submit" onClick={() => deleteBtn(task)}>Delete</button>
   </li>);
 };
 
