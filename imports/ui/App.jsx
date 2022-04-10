@@ -7,6 +7,14 @@ import TaskForm from './components/TaskForm';
 export const App = () => {
   const tasks = useTracker(() => TasksCollection.find({}, {sort: {createdAt: -1} }).fetch());
 
+  const checkTask = ( { _id, isChecked } ) => {
+    TasksCollection.update( _id, {
+      $set: {
+        isChecked: !isChecked,
+      }
+    })
+  };
+
   const deleteTask = ({_id}) => {
     TasksCollection.remove(_id);
   };
@@ -20,7 +28,8 @@ export const App = () => {
           <Task
             key={ i }
             task={ task }
-            deleteBtn={deleteTask}
+            deleteBtn={ deleteTask }
+            onCheck={ checkTask }
           />
         ))}
       </ul>

@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Task = ( { task, deleteBtn } ) => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleChange = ( e ) => {
-    if (!isChecked) {
-      setIsChecked(true);
-    } else {
-      setIsChecked(false);
-    }
-  }
+const Task = ( { task, onCheck, deleteBtn } ) => {
 
   return ( <li>
-    {console.log(task)}
     <input
       type="checkbox"
-      onChange={handleChange}
-      checked={isChecked}
+      onClick={ ()=>onCheck(task) }
+      checked={ !!task.isChecked }
+      readOnly
     />
     <p>{ task.text }</p>
-    <button type="submit" onClick={() => deleteBtn(task)}>Delete</button>
+    <button
+      type="button"
+      onClick={ () => deleteBtn( task ) }
+    >
+      Delete
+    </button>
   </li>);
 };
 
