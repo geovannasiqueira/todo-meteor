@@ -1,11 +1,15 @@
 import { useTracker } from 'meteor/react-meteor-data';
-import React from 'react';
+import React, { useState } from 'react';
 import { TasksCollection } from '../api/tasks';
 import Task from './components/Task';
 import TaskForm from './components/TaskForm';
 
 export const App = () => {
-  const tasks = useTracker(() => TasksCollection.find({}, {sort: {createdAt: -1} }).fetch());
+  const [ hideTasks, setHideTasks ] = useState( false );
+
+  const completedFilter = { isChecked: { $ne: true } };
+
+  const tasks = useTracker(() => TasksCollection.find(hideTasks ?completedFilter : {}, {sort: {createdAt: -1} }).fetch());
 
   const checkTask = ( { _id, isChecked } ) => {
     TasksCollection.update( _id, {
@@ -15,14 +19,24 @@ export const App = () => {
     })
   };
 
+  const pendingCounter = useTracker( () =>
+    TasksCollection.find( completedFilter ).count()
+  );
+
   const deleteTask = ({_id}) => {
     TasksCollection.remove(_id);
   };
 
   return (
     <div>
-      <h1>TO-DO List</h1>
+      <h1>{pendingCounter ? `TO-DO List (${pendingCounter})` : "TO-DO List"}</h1>
       <TaskForm />
+      <button
+        type="button"
+        onClick={ () => setHideTasks(!hideTasks)}
+      >
+        {hideTasks ? 'All Tasks' : 'Hide Completed'}
+      </button>
       <ul>
         { tasks.map( ( task, i ) => (
           <Task
