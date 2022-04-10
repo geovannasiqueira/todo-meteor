@@ -19,5 +19,8 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.1"
   }
 }
