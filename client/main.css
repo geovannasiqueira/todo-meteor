@@ -1,4 +1,14 @@
-body {
-  padding: 10px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
   font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
 }

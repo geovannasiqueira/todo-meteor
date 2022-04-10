@@ -33,7 +33,7 @@ export const App = () => {
       <TaskForm />
       <button
         type="button"
-        onClick={ () => setHideTasks(!hideTasks)}
+        onClick={() => setHideTasks(!hideTasks)}
       >
         {hideTasks ? 'All Tasks' : 'Hide Completed'}
       </button>
