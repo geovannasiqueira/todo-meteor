@@ -12,7 +12,12 @@ export const App = () => {
       <h1>TO-DO List</h1>
       <TaskForm />
       <ul>
-        {tasks.map((task, i) => <Task key={i} task={task}/>)}
+        { tasks.map( ( task, i ) => (
+          <Task
+            key={ i }
+            task={ task }
+          />
+        ))}
       </ul>
     </div>
   );
