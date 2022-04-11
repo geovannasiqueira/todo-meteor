@@ -3,6 +3,7 @@
 A simple to-do application for Meteor practice with React.
 
 Feats: 
+ - add tasks;
  - check tasks;
  - remove tasks;
  - filter tasks;
