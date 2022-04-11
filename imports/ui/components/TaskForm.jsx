@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { TasksCollection } from '../../api/tasks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const TaskForm = () => {
   const [ text, setText ] = useState( '' );
@@ -35,7 +37,7 @@ const TaskForm = () => {
         type="submit"
         className="btn btn-sm rounded-full"
       >
-        +
+        <FontAwesomeIcon className="" icon={faPlus} />
       </button>
     </form>
   );

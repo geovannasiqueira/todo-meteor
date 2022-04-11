@@ -6,9 +6,13 @@ html {
   font-family: sans-serif;
   height: 100%;
   width: 100%;
+  background: linear-gradient(90deg, #A1FFCE, #FAFFD1);
+  display: flex;
 }
 
 body {
-  height: 100%;
-  width: 100%;
+  margin: auto;
+  background-color: rgba(119, 112, 112, 0.4);
+  border-radius: 7%;
+  font-family: 'Bebas Neue', cursive;
 }

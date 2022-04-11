@@ -1,3 +1,5 @@
+import { faListCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
 import { TasksCollection } from '../api/tasks';
@@ -36,11 +38,14 @@ export const App = () => {
   };
 
   return (
-    <div className="w-4/5 h-full m-auto">
-      <div className="flex justify-center p-4 bg-base-200">
-        <h1>{pendingCounter ? `TO-DO List (${pendingCounter})` : "TO-DO List"}</h1>
+    <div className="w-full h-full m-auto">
+      <div className="flex justify-center p-4 text-4xl">
+        <h1>
+          <FontAwesomeIcon icon={ faListCheck } className="w-5 px-2"/>
+          { pendingCounter ? `Tasks (${ pendingCounter })` : "Tasks" }
+        </h1>
       </div>
-      <div className=" flex justify-between">
+      <div className=" flex justify-around">
         <div className="" >
           <TaskForm />
         </div>
@@ -56,16 +61,16 @@ export const App = () => {
           </select>
         </div>
       </div>
-      <ul className="">
-        { tasks.map( ( task, i ) => (
-          <Task
-            key={ i }
-            task={ task }
-            deleteBtn={ deleteTask }
-            onCheck={ checkTask }
-          />
-        ))}
-      </ul>
+        <ul className="my-4 h-3/4">
+          { tasks.map( ( task, i ) => (
+            <Task
+              key={ i }
+              task={ task }
+              deleteBtn={ deleteTask }
+              onCheck={ checkTask }
+            />
+          ))}
+        </ul>
     </div>
   );
 }
