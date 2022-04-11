@@ -19,6 +19,14 @@ export const App = () => {
     })
   };
 
+  const handleChange = ( { target } ) => {
+    if ( target.value === 'hide' ) {
+      setHideTasks(true)
+    }
+    if(target.value === 'all')
+    setHideTasks( false );
+  }
+
   const pendingCounter = useTracker( () =>
     TasksCollection.find( completedFilter ).count()
   );
@@ -28,16 +36,27 @@ export const App = () => {
   };
 
   return (
-    <div>
-      <h1>{pendingCounter ? `TO-DO List (${pendingCounter})` : "TO-DO List"}</h1>
-      <TaskForm />
-      <button
-        type="button"
-        onClick={() => setHideTasks(!hideTasks)}
-      >
-        {hideTasks ? 'All Tasks' : 'Hide Completed'}
-      </button>
-      <ul>
+    <div className="w-4/5 h-full m-auto">
+      <div className="flex justify-center p-4 bg-base-200">
+        <h1>{pendingCounter ? `TO-DO List (${pendingCounter})` : "TO-DO List"}</h1>
+      </div>
+      <div className=" flex justify-between">
+        <div className="" >
+          <TaskForm />
+        </div>
+        <div className="flex items-center " >
+          <select
+            type="select"
+            onChange={ handleChange }
+            className="select select-bordered select-sm w-full ml-2"
+          >
+            <option disabled selected>Filter</option>
+            <option value="all">All</option>
+            <option value="hide">Hide Completed</option>
+          </select>
+        </div>
+      </div>
+      <ul className="">
         { tasks.map( ( task, i ) => (
           <Task
             key={ i }

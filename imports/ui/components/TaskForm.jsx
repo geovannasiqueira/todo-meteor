@@ -19,15 +19,24 @@ const TaskForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={ handleSubmit }
+      className="flex justify-between"
+    >
       <input
         type="text"
         placeholder="new task"
         value={text}
-        onChange={handleChange}
+        onChange={ handleChange }
+        className="input input-bordered input-sm mr-0.5 w-full"
       />
 
-      <button type="submit">Add Task</button>
+      <button
+        type="submit"
+        className="btn btn-sm rounded-full"
+      >
+        +
+      </button>
     </form>
   );
 }
