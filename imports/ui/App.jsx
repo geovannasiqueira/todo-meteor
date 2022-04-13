@@ -38,8 +38,8 @@ export const App = () => {
   };
 
   return (
-    <div className="w-full h-full m-auto">
-      <div className="flex justify-center p-4 text-4xl">
+    <div className="w-full h-full m-auto font-sans">
+      <div className="flex justify-center p-4 text-4xl font-bold">
         <h1>
           <FontAwesomeIcon icon={ faListCheck } className="w-5 px-2"/>
           { pendingCounter ? `Tasks (${ pendingCounter })` : "Tasks" }
@@ -53,7 +53,7 @@ export const App = () => {
           <select
             type="select"
             onChange={ handleChange }
-            className="select select-bordered select-sm w-full ml-2"
+            className="select select-bordered select-sm ml-2"
           >
             <option disabled selected>Filter</option>
             <option value="all">All</option>

@@ -30,7 +30,7 @@ const TaskForm = () => {
         placeholder="new task"
         value={text}
         onChange={ handleChange }
-        className="input input-bordered input-sm mr-0.5 w-full"
+        className="input input-bordered input-sm mr-0.5 w-44"
       />
 
       <button
