@@ -1,20 +1,22 @@
-import React from 'react';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import React from 'react';
 
 const Task = ( { task, onCheck, deleteBtn } ) => {
 
   return (
-    <div className="bg-white bg-opacity-50 h-10 p-2 rounded-md m-4">
-      <li className="w-full flex space-x-4 bg-sky-900 items-center justify-between">
+    <div className="bg-white bg-opacity-50 p-2 rounded-md m-4">
+      <li className="w-full flex bg-sky-900 items-center justify-between text-left">
+        <div className="flex items-center overflow-x-auto no-scrollbar">
         <input
           type="checkbox"
           onClick={ ()=>onCheck(task) }
           checked={ !!task.isChecked }
-          className="checkbox checkbox-xs checkbox-accent bg-white"
+          className="checkbox checkbox-xs w-4 mr-4 checkbox-accent bg-white"
           readOnly
         />
-        <p className="">{ task.text }</p>
+        <p className="w-4/5">{ task.text }</p>
+        </div>
         <button
           type="button"
           onClick={ () => deleteBtn( task ) }

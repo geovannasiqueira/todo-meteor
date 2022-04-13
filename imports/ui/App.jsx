@@ -61,7 +61,7 @@ export const App = () => {
           </select>
         </div>
       </div>
-        <ul className="my-4 h-3/4">
+        <ul className="my-4 h-3/4 overflow-y-auto no-scrollbar">
           { tasks.map( ( task, i ) => (
             <Task
               key={ i }
